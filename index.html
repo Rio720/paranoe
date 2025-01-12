@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Happy</title>
+</head>
+<body>
+    <!-- Contenedor para controles de audio -->
+    <div class="audio-controls">
+        <button id="play-pause-btn">Reproducir</button>
+        <button id="stop-btn">Detener</button>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+    </div>
+
+    <!-- Reproducción de música (oculto por defecto) -->
+    <audio id="background-audio" src="d.mp3" loop></audio>
+
+    <!-- Contenido principal -->
+    <div class="flower">
+        <div class="text-above">De Jhovanny</div>
+        <div class="mid"></div>
+        <div class="Petal1 p1"></div>
+        <div class="Petal1 p2"></div>
+        <div class="Petal1 p3"></div>
+        <div class="Petal1 p4"></div>
+        <div class="Petal2 p1"></div>
+        <div class="Petal2 p2"></div>
+        <div class="Petal2 p3"></div>
+        <div class="Petal2 p4"></div>
+        <div class="Petal3 p1"></div>
+        <div class="Petal3 p2"></div>
+        <div class="Petal3 p3"></div>
+        <div class="Petal3 p4"></div>
+        <div class="text-below">
+          Para Noemi Nicolle Herrera Carbajal, la niña más dulce
+        </div>
+    </div>
+
+    <script>
+        // Obtener referencias a los elementos del DOM
+        const audio = document.getElementById('background-audio');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const stopBtn = document.getElementById('stop-btn');
+        const volumeSlider = document.getElementById('volume-slider');
+
+        // Manejar reproducción y pausa
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.textContent = 'Pausar';
+            } else {
+                audio.pause();
+                playPauseBtn.textContent = 'Reproducir';
+            }
+        });
+
+        // Manejar detención del audio
+        stopBtn.addEventListener('click', () => {
+            audio.pause();
+            audio.currentTime = 0;
+            playPauseBtn.textContent = 'Reproducir';
+        });
+
+        // Manejar control de volumen
+        volumeSlider.addEventListener('input', (e) => {
+            audio.volume = e.target.value;
+        });
+
+        // Configuración inicial
+        audio.volume = 0.5; // Volumen inicial
+    </script>
+</body>
+</html>
